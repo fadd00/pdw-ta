@@ -32,7 +32,7 @@ Pastikan Anda memiliki:
 ### 1. Clone Repository
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/fadd00/pdw-ta.git
 cd pdw-ta
 ```
 
