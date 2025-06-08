@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [products, setProducts] = useState([]); // Tambah state untuk products
+  const [loading, setLoading] = useState(true); // Tambah state untuk loading
 
   useEffect(() => {
     // Check for saved theme preference or default to light mode
@@ -13,7 +15,26 @@ export default function Home() {
       setIsDarkMode(true);
       document.documentElement.classList.add('dark');
     }
+    
+    // Fetch products from database
+    fetchProducts();
   }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('/api/products');
+      if (response.ok) {
+        const data = await response.json();
+        setProducts(data);
+      } else {
+        console.error('Failed to fetch products');
+      }
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -23,6 +44,19 @@ export default function Home() {
     } else {
       document.documentElement.classList.remove('dark');
       localStorage.setItem('theme', 'light');
+    }
+  };
+
+  // Helper function untuk gradient berdasarkan warna
+  const getColorGradient = (color: string) => {
+    switch (color) {
+      case 'rose':
+        return 'from-rose-200 to-rose-400 dark:from-rose-300 dark:to-rose-500';
+      case 'blue':
+        return 'from-blue-200 to-blue-400 dark:from-blue-300 dark:to-blue-500';
+      case 'amber':
+      default:
+        return 'from-amber-200 to-amber-400 dark:from-amber-300 dark:to-amber-500';
     }
   };
 
@@ -103,7 +137,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Products Section */}
+      {/* Products Section - UPDATE INI */}
       <section id="products" className="py-20 px-6 bg-gradient-to-b from-amber-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -115,37 +149,38 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-12">
-            {/* Product 1 */}
-            <div className="text-center group">
-              <div className="bg-white dark:bg-gray-700 rounded-lg p-8 shadow-lg hover:shadow-xl dark:shadow-gray-900 transition-all duration-300 mb-6">
-                <div className="w-24 h-36 bg-gradient-to-b from-amber-200 to-amber-400 dark:from-amber-300 dark:to-amber-500 rounded-t-full mx-auto mb-4 opacity-70 transition-colors duration-300"></div>
-              </div>
-              <h3 className="text-2xl font-light text-amber-900 dark:text-amber-100 mb-2 transition-colors duration-300">Golden Hour</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">Warm, sensual, and captivating</p>
-              <p className="text-amber-800 dark:text-amber-400 font-medium transition-colors duration-300">$150</p>
+          {loading ? (
+            <div className="text-center py-12">
+              <div className="text-amber-900 dark:text-amber-100 text-xl">Loading products...</div>
             </div>
-
-            {/* Product 2 */}
-            <div className="text-center group">
-              <div className="bg-white dark:bg-gray-700 rounded-lg p-8 shadow-lg hover:shadow-xl dark:shadow-gray-900 transition-all duration-300 mb-6">
-                <div className="w-24 h-36 bg-gradient-to-b from-rose-200 to-rose-400 dark:from-rose-300 dark:to-rose-500 rounded-t-full mx-auto mb-4 opacity-70 transition-colors duration-300"></div>
-              </div>
-              <h3 className="text-2xl font-light text-amber-900 dark:text-amber-100 mb-2 transition-colors duration-300">Midnight Rose</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">Mysterious, elegant, and alluring</p>
-              <p className="text-amber-800 dark:text-amber-400 font-medium transition-colors duration-300">$180</p>
+          ) : products.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="text-gray-600 dark:text-gray-300 text-lg">No products available at the moment.</div>
             </div>
-
-            {/* Product 3 */}
-            <div className="text-center group">
-              <div className="bg-white dark:bg-gray-700 rounded-lg p-8 shadow-lg hover:shadow-xl dark:shadow-gray-900 transition-all duration-300 mb-6">
-                <div className="w-24 h-36 bg-gradient-to-b from-blue-200 to-blue-400 dark:from-blue-300 dark:to-blue-500 rounded-t-full mx-auto mb-4 opacity-70 transition-colors duration-300"></div>
-              </div>
-              <h3 className="text-2xl font-light text-amber-900 dark:text-amber-100 mb-2 transition-colors duration-300">Ocean Breeze</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">Fresh, clean, and invigorating</p>
-              <p className="text-amber-800 dark:text-amber-400 font-medium transition-colors duration-300">$120</p>
+          ) : (
+            <div className="grid md:grid-cols-3 gap-12">
+              {products.map((product) => (
+                <div key={product.id} className="text-center group">
+                  <div className="bg-white dark:bg-gray-700 rounded-lg p-8 shadow-lg hover:shadow-xl dark:shadow-gray-900 transition-all duration-300 mb-6">
+                    {product.image ? (
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        width={120}
+                        height={180}
+                        className="mx-auto rounded-lg object-cover"
+                      />
+                    ) : (
+                      <div className={`w-24 h-36 bg-gradient-to-b ${getColorGradient(product.color)} rounded-t-full mx-auto mb-4 opacity-70 transition-colors duration-300`}></div>
+                    )}
+                  </div>
+                  <h3 className="text-2xl font-light text-amber-900 dark:text-amber-100 mb-2 transition-colors duration-300">{product.name}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">{product.description}</p>
+                  <p className="text-amber-800 dark:text-amber-400 font-medium transition-colors duration-300">${product.price}</p>
+                </div>
+              ))}
             </div>
-          </div>
+          )}
         </div>
       </section>
 
