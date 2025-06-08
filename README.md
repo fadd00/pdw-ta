@@ -1,6 +1,4 @@
 
-![next](https://github.com/user-attachments/assets/01d8fa8b-393a-4f73-93e8-25c7eb6bf873)
-![prisma](https://github.com/user-attachments/assets/5cc08622-3cfa-4a85-a8e6-99114a68e10d)
 ![Screenshot 2025-06-08 225450](https://github.com/user-attachments/assets/010cfd02-c880-406a-a92f-3ab34f7714de)
 ![Screenshot 2025-06-08 225614](https://github.com/user-attachments/assets/c3b58207-7d5e-4b69-94b7-4850f5d9d7f9)
 
