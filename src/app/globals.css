@@ -24,3 +24,24 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes subtleShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-bg-texture {
+  background: linear-gradient(
+    45deg,
+    rgba(255,255,255,0.01) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255,255,255,0.01) 50%,
+    rgba(255,255,255,0.01) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 60px 60px; /* Adjust size of texture */
+  animation: subtleShimmer 120s linear infinite; /* Very slow animation */
+}

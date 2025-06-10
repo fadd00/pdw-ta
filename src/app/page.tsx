@@ -47,7 +47,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 transition-colors duration-300">
+    <div className="min-h-screen bg-zinc-900 animated-bg-texture transition-colors duration-300">
       {/* Login Button */}
       <div className="fixed top-6 right-6 z-50">
         <Link
@@ -59,9 +59,9 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 py-20">
+      <section className="min-h-screen flex items-center justify-center px-6 py-20 bg-zinc-900">
         <div className="text-center max-w-4xl">
-          <h1 className="text-5xl md:text-7xl font-light text-amber-100 mb-6 tracking-wider transition-colors duration-300">
+          <h1 className="text-5xl md:text-7xl font-normal text-amber-100 mb-6 tracking-wider transition-colors duration-300">
             ESSENCE
           </h1>
           <p className="text-xl md:text-2xl text-amber-300 mb-8 font-light transition-colors duration-300">
@@ -76,7 +76,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-gray-800 transition-colors duration-300">
+      <section id="about" className="py-20 px-6 bg-zinc-800 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -98,7 +98,7 @@ export default function Home() {
               </p>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-gray-700 to-gray-600 rounded-lg h-96 flex items-center justify-center transition-colors duration-300">
+              <div className="bg-gradient-to-br from-zinc-700 to-zinc-600 rounded-lg h-96 flex items-center justify-center transition-colors duration-300">
                 <div className="w-32 h-48 bg-gradient-to-b from-amber-400 to-amber-600 rounded-t-full opacity-60 transition-colors duration-300"></div>
               </div>
             </div>
@@ -107,7 +107,7 @@ export default function Home() {
       </section>
 
       {/* Products Section */}
-      <section id="products" className="py-20 px-6 bg-gradient-to-b from-gray-900 to-gray-800 transition-colors duration-300">
+      <section id="products" className="py-20 px-6 bg-zinc-900 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-amber-100 mb-8 transition-colors duration-300">Our Products</h2>
@@ -130,21 +130,23 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-12">
               {products.map((product) => (
                 <div key={product.id} className="text-center group">
-                  <div className="bg-gray-700 rounded-lg p-8 shadow-lg hover:shadow-xl shadow-gray-900 transition-all duration-300 mb-6">
+                  <div className="bg-zinc-800 rounded-lg p-10 shadow-xl hover:shadow-2xl shadow-black/50 transition-all duration-300 mb-6 group-hover:scale-105">
                     {product.image ? (
                       <Image
                         src={product.image}
                         alt={product.name}
                         width={120}
-                        height={180}
-                        className="mx-auto rounded-lg object-cover"
+                        height={180} // This height is for aspect ratio, actual display height controlled by className h-48
+                        className="mx-auto rounded-lg object-cover h-48 w-auto" // Consistent height
                       />
                     ) : (
-                      <div className={`w-24 h-36 bg-gradient-to-b ${getColorGradient(product.color)} rounded-t-full mx-auto mb-4 opacity-70 transition-colors duration-300`}></div>
+                      <div className={`w-24 h-48 bg-gradient-to-b ${getColorGradient(product.color)} rounded-t-full mx-auto mb-4 opacity-70 transition-colors duration-300 flex items-center justify-center`}>
+                        <span className="text-xs text-white/70">No Image</span>
+                      </div> // Adjusted placeholder height
                     )}
                   </div>
                   <h3 className="text-2xl font-light text-amber-100 mb-2 transition-colors duration-300">{product.name}</h3>
-                  <p className="text-gray-300 mb-4 transition-colors duration-300">{product.description}</p>
+                  <p className="text-gray-300 mb-4 transition-colors duration-300 h-20 overflow-hidden">{product.description}</p> {/* Fixed height for description */}
                   <p className="text-amber-400 font-medium transition-colors duration-300">${product.price}</p>
                 </div>
               ))}
@@ -154,10 +156,10 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-gray-900 text-white transition-colors duration-300">
+      <section id="contact" className="py-20 px-6 bg-zinc-900 text-white transition-colors duration-300">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-light mb-8">Get in Touch</h2>
-          <div className="w-16 h-px bg-white mx-auto mb-12"></div>
+          <h2 className="text-4xl font-light text-amber-100 mb-8 transition-colors duration-300">Get in Touch</h2>
+          <div className="w-16 h-px bg-amber-400 mx-auto mb-12"></div>
 
           <div className="grid md:grid-cols-3 gap-12 mb-16">
             <div>
@@ -191,7 +193,7 @@ export default function Home() {
               Experience the essence of luxury. Visit our boutique or contact us
               to discover your perfect fragrance.
             </p>
-            <button className="bg-gray-700 text-white px-8 py-3 rounded-full font-medium hover:bg-gray-600 transition-colors duration-300">
+            <button className="bg-amber-700 text-white px-8 py-3 rounded-full font-medium hover:bg-amber-600 transition-colors duration-300">
               Schedule a Consultation
             </button>
           </div>
@@ -199,7 +201,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-950 text-gray-300 py-8 px-6 transition-colors duration-300">
+      <footer className="bg-zinc-900 text-gray-300 py-8 px-6 transition-colors duration-300 border-t border-zinc-700">
         <div className="max-w-6xl mx-auto text-center">
           <p className="mb-4">© 2025 Essence. All rights reserved.</p>
           <p className="text-sm">Crafted with passion for fragrance enthusiasts worldwide.</p>
