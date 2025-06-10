@@ -59,7 +59,7 @@ export async function PUT(
     }
 
     // Ambil data dari request body
-    const { name, description, price, color } = await request.json()
+    const { name, description, price, color, image } = await request.json()
 
     // Update produk
     const updatedProduct = await prisma.product.update({
@@ -68,7 +68,8 @@ export async function PUT(
         name: name || existingProduct.name,
         description: description || existingProduct.description,
         price: price ? parseFloat(price) : existingProduct.price,
-        color: color || existingProduct.color
+        color: color || existingProduct.color,
+        image: image !== undefined ? image : existingProduct.image
       }
     })
 
