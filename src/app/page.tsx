@@ -130,24 +130,38 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-12">
               {products.map((product) => (
                 <div key={product.id} className="text-center group">
-                  <div className="bg-zinc-800 rounded-lg p-10 shadow-xl hover:shadow-2xl shadow-black/50 transition-all duration-300 mb-6 group-hover:scale-105">
-                    {product.image ? (
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        width={120}
-                        height={180} // This height is for aspect ratio, actual display height controlled by className h-48
-                        className="mx-auto rounded-lg object-cover h-48 w-auto" // Consistent height
-                      />
-                    ) : (
-                      <div className={`w-24 h-48 bg-gradient-to-b ${getColorGradient(product.color)} rounded-t-full mx-auto mb-4 opacity-70 transition-colors duration-300 flex items-center justify-center`}>
-                        <span className="text-xs text-white/70">No Image</span>
-                      </div> // Adjusted placeholder height
-                    )}
+                  {/* This outer div keeps padding and margin, but background is transparent */}
+                  <div className="bg-transparent p-10 mb-6">
+                    {/* This inner div wraps content and gets hover effects */}
+                    <div className="content-wrapper rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_30px_5px_rgba(251,191,36,0.15)]">
+                      {product.image ? (
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          width={120} // Aspect ratio hint, actual size controlled by className
+                          height={180} // Aspect ratio hint
+                          className="w-full h-48 object-cover rounded-lg mb-4" // Full width, fixed height
+                        />
+                      ) : (
+                        <div
+                          className={`w-full h-48 bg-gradient-to-b ${getColorGradient(
+                            product.color
+                          )} rounded-lg mb-4 opacity-70 flex items-center justify-center`}
+                        >
+                          <span className="text-xs text-white/70">No Image</span>
+                        </div>
+                      )}
+                      <h3 className="text-2xl font-light text-amber-100 mb-2 transition-colors duration-300">
+                        {product.name}
+                      </h3>
+                      <p className="text-gray-300 mb-4 transition-colors duration-300 h-20 overflow-hidden">
+                        {product.description}
+                      </p>
+                      <p className="text-amber-400 font-medium transition-colors duration-300">
+                        ${product.price}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-light text-amber-100 mb-2 transition-colors duration-300">{product.name}</h3>
-                  <p className="text-gray-300 mb-4 transition-colors duration-300 h-20 overflow-hidden">{product.description}</p> {/* Fixed height for description */}
-                  <p className="text-amber-400 font-medium transition-colors duration-300">${product.price}</p>
                 </div>
               ))}
             </div>
