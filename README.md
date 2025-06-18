@@ -6,10 +6,12 @@
 ![ucprojek](https://github.com/user-attachments/assets/a387abd0-e7fb-47be-9b35-648608bfbbf7)
 
 ## kelompok 8
-Farhad Dipta Utama (20230140206)
-M Irsyad R.M (20230140227)
-M Abdullah Faqih (20230140229)
-Andhika Prima H (20230140239)
+- Farhad Dipta Utama (20230140206)
+- M Irsyad R.M (20230140227)
+- M Abdullah Faqih (20230140229)
+- Andhika Prima H (20230140239)
+
+
 # Essence - Perfume E-commerce Platform - next.js dan prisma.js
 
 Sebuah platform e-commerce untuk parfum yang dibangun dengan Next.js 15, TypeScript, Prisma, dan Tailwind CSS. Platform ini memiliki fitur landing page yang elegan, sistem autentikasi, dan panel admin untuk manajemen produk.
