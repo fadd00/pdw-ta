@@ -5,6 +5,9 @@
 ## USE CASE 
 ![ucprojek](https://github.com/user-attachments/assets/a387abd0-e7fb-47be-9b35-648608bfbbf7)
 
+## naskah publikasi
+https://umyac-my.sharepoint.com/:w:/g/personal/muhammad_irsyad_ft23_mail_umy_ac_id/Eb_C2UQBH9BAjq6wveFN6dIBWVIAeNAZYoL5p3b5lZRB2Q?e=y0GljM
+
 ## kelompok 8
 - Farhad Dipta Utama (20230140206)
 - M Irsyad R.M (20230140227)
