@@ -177,27 +177,27 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-12 mb-16">
             <div>
-              <h3 className="text-xl font-medium mb-4">Visit Us</h3>
+              <h3 className="text-xl font-medium mb-4">Andhika Prima Hutama</h3>
               <p className="text-gray-300 leading-relaxed transition-colors duration-300">
-                123 Fragrance Boulevard<br />
-                New York, NY 10001<br />
-                United States
+                20230140239<br />
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-medium mb-4">Call Us</h3>
+              <h3 className="text-xl font-medium mb-4">Farhad Dipta Utama</h3>
               <p className="text-gray-300 leading-relaxed transition-colors duration-300">
-                +1 (555) 123-4567<br />
-                Mon-Fri: 9AM-6PM<br />
-                Sat: 10AM-4PM
+                20230140206<br />
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-medium mb-4">Email Us</h3>
+              <h3 className="text-xl font-medium mb-4">Muhammad Abdullah Faqih</h3>
               <p className="text-gray-300 leading-relaxed transition-colors duration-300">
-                hello@essence.com<br />
-                support@essence.com<br />
-                orders@essence.com
+                20230140229<br />
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-medium mb-4">Muhammad Irsyad R.M</h3>
+              <p className="text-gray-300 leading-relaxed transition-colors duration-300">
+                20230140227<br />
               </p>
             </div>
           </div>
