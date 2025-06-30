@@ -7,6 +7,8 @@
 
 ## naskah publikasi
 https://umyac-my.sharepoint.com/:w:/g/personal/muhammad_irsyad_ft23_mail_umy_ac_id/Eb_C2UQBH9BAjq6wveFN6dIBWVIAeNAZYoL5p3b5lZRB2Q?e=y0GljM
+# Resume
+https://drive.google.com/file/d/1v62a_qWXUYeNjITmPO1N-b2wLA6N-NGF/view?usp=sharing
 
 ## kelompok 8
 - Farhad Dipta Utama (20230140206)
